@@ -104,6 +104,10 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+static/
+media/
+calculo.py
+project/local_settings.py
 
 # mkdocs documentation 
 /site 
