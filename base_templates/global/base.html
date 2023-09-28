@@ -1,40 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'global/css/style.css' %} ">
-</head>
-<body>
-    <header class="header">
-        <h1 class="header-heading">
-            <a class="header-link" href="{% url "contact:index" %}">
-                Agenda
-            </a>
-        </h1>
-
-        <nav class="menu">
-            <ul class="menu-list">
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        Link1
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="" class="menu-link">
-                        Link2
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-
-    </header>
+<html lang="pt-br">
+  <head>
+    {% include "global/partials/_head.html" %}
+  </head>
+  <body>
+    {% include "global/partials/_header.html" %}
 
     <main class="content">
-    {% block content %}{% endblock content %}
+      {% block content %}{% endblock content %}
+      {% include "global/partials/_pagination.html" %}
     </main>
-</body>
+  </body>
 </html>
