@@ -239,6 +239,11 @@ svg {
     border: 1px solid rgba(255, 255, 0, 90%);
 }
 
+.message.info {
+    background: rgba(19, 211, 236, 0.3);
+    border: 1px solid rgba(19, 211, 236, 90%);
+}
+
 .form-wrapper {
     max-width: 60rem;
     margin: var(--spacing) auto;
@@ -268,11 +273,20 @@ svg {
     margin: 1em 0;
 }
 
+li {
+    list-style: none;
+}
+
 .form-group .help-text,
 .form-group .help-text~ul {
     margin: 0;
     font-size: var(--smallest-font-size);
     list-style: none;
+}
+
+.help_text, .form-group ul {
+    color: rgb(126, 126, 126);
+    font-size: smaller;
 }
 
 .form-group input,
