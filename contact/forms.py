@@ -8,7 +8,7 @@ from .models import Contact
 
 
 class ContactForm(forms.ModelForm):
-    picture = forms.ImageField(widget=forms.FileInput(attrs={"acept": "image/*"}))
+    picture = forms.ImageField(widget=forms.FileInput(attrs={"acept": "image/*"}), required=False)
 
     class Meta:
         model = Contact
@@ -103,8 +103,6 @@ class RegisterUpdateForm(forms.ModelForm):
         fields = (
             "first_name",
             "last_name",
-            "email",
-            "username",
         )
 
     def save(self, commit=True):

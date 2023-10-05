@@ -58,6 +58,8 @@ def user_update(request):
 
     if not form.is_valid():
         context = {"site_title": "Atualizando Contato - ", "form": form}
+        messages.error(request, "Erro ao atualizar o usuário, o formulário não é válido!")
         return render(request, "contact/register.html", context)
     form.save()
+    messages.success(request, "Usuário atualizado com sucesso!")
     return redirect("contact:user_update")

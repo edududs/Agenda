@@ -1,9 +1,11 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
 from contact.forms import ContactForm
 from contact.models import Contact
+
 
 @login_required(login_url="contact:login")
 def create(request):
@@ -21,8 +23,9 @@ def create(request):
             contact = form.save(commit=False)
             contact.owner = request.user
             contact.save()
+            messages.success(request, "Contato criado com sucesso!")
             return redirect("contact:update", contact_id=contact.pk)
-
+        messages.error(request, "O formulário não é válido")
         return render(request, "contact/create.html", context)
 
     context = {
@@ -32,6 +35,7 @@ def create(request):
     }
 
     return render(request, "contact/create.html", context)
+
 
 @login_required(login_url="contact:login")
 def update(request, contact_id):
@@ -50,8 +54,9 @@ def update(request, contact_id):
             contact = form.save(commit=False)
             contact.owner = request.user
             contact.save()
+            messages.success(request, "Contato atualizado com sucesso!")
             return redirect("contact:update", contact_id=contact.pk)
-
+        messages.error(request, "O formulário não é válido")
         return render(request, "contact/create.html", context)
 
     context = {
@@ -61,6 +66,7 @@ def update(request, contact_id):
     }
 
     return render(request, "contact/create.html", context)
+
 
 @login_required(login_url="contact:login")
 def delete(request, contact_id):
@@ -74,5 +80,6 @@ def delete(request, contact_id):
     print("confirmation", confirmation)
     if confirmation == "yes":
         contact.delete()
+        messages.success(request, "Contato excluído com sucesso!")
         return redirect("contact:index")
     return render(request, "contact/contact.html", context)
