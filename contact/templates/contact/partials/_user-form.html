@@ -2,16 +2,19 @@
   {% csrf_token %}
 
   <div class="form-content">
+
     {% for field in form %}
       <div class="form-group">
         <label for="{{ feld.id_for_label }}">{{ field.label }}</label>
           {{ field }} {{ field.errors }} 
+
         {% if field.help_text %}
           <p class="help_text">{{ field.help_text }}</p>
         {% endif %}
       </div>
     {% endfor %}
   </div>
+
   {% if form.non_field_errors %}
     <div class="form-content">
       <div class="form-group">
