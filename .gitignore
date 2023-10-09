@@ -108,6 +108,7 @@ static/
 media/
 calculo.py
 project/local_settings.py
+comandos/
 
 # mkdocs documentation 
 /site 
